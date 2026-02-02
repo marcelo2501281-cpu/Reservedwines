@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assinatura de vinhos curada para iniciantes. Faça o quiz e receba rótulos escolhidos por especialistas. Escolha segura, aprovada por quem está começando.">
+    <title>Reservedwines - Assine e acerte no vinho | Curadoria para iniciantes</title>
+    <style>
+        :root {
+            --color-primary: #6B1F3A;
+            --color-secondary: #F5F1E8;
+            --color-accent: #2F4538;
+            --color-text: #1a1a1a;
+            --color-text-light: #4a4a4a;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background: var(--color-secondary);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, #ffffff 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-image {
+            flex: 1;
+            background: linear-gradient(135deg, #d4c5b9 0%, #e8dfd5 100%);
+            aspect-ratio: 4/3;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            text-align: center;
+            padding: var(--spacing-md);
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--color-primary);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: transform 0.2s, opacity 0.2s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: var(--color-accent);
+        }
+
+        section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits {
+            background: #ffffff;
+        }
+
+        .benefits-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .benefit-card {
+            padding: var(--spacing-md);
+            background: var(--color-secondary);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--spacing-sm);
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.8rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .benefit-card p {
+            color: var(--color-text-light);
+            font-size: 1rem;
+        }
+
+        .social-proof {
+            background: var(--color-primary);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .social-proof .section-title {
+            color: #ffffff;
+        }
+
+        .stats {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .testimonial {
+            max-width: 700px;
+            margin: var(--spacing-lg) auto 0;
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            margin-top: var(--spacing-sm);
+            font-size: 1rem;
+            opacity: 0.9;
+            font-style: normal;
+        }
+
+        .how-it-works {
+            background: #ffffff;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto var(--spacing-sm);
+            background: var(--color-accent);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .step h3 {
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .step p {
+            color: var(--color-text-light);
+        }
+
+        .offer {
+            background: var(--color-secondary);
+        }
+
+        .offer-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .offer-item {
+            padding: var(--spacing-md);
+            background: #ffffff;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .offer-item h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.2rem;
+        }
+
+        .pricing {
+            background: #ffffff;
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .pricing-card {
+            padding: var(--spacing-md);
+            background: var(--color-secondary);
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--color-primary);
+            transform: scale(1.02);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .pricing-card .bottles {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .price-detail {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .price-options {
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background: #ffffff;
+            border-radius: 4px;
+        }
+
+        .price-option {
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.95rem;
+        }
+
+        .faq {
+            background: var(--color-secondary);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: var(--spacing-sm);
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: var(--spacing-sm) var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: var(--color-primary);
+            transition: opacity 0.2s;
+        }
+
+        .faq-question:hover {
+            opacity: 0.8;
+        }
+
+        .faq-answer {
+            padding: 0 var(--spacing-md) var(--spacing-md);
+            color: var(--color-text-light);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .guarantee {
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .guarantee-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+            background: var(--color-secondary);
+            border-radius: 8px;
+        }
+
+        .guarantee-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--spacing-md);
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 2.5rem;
+        }
+
+        .guarantee h3 {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cta-final {
+            background: var(--color-primary);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            color: #ffffff;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cta-final p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-md);
+            opacity: 0.95;
+        }
+
+        footer {
+            background: var(--color-text);
+            color: #ffffff;
+            padding: var(--spacing-md) 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
+        .mobile-cta {
+            display: block;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-primary);
+            padding: var(--spacing-sm);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .mobile-cta .btn {
+            width: 100%;
+            margin: 0;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .hero-content {
+                flex-direction: row;
+                align-items: center;
+                gap: var(--spacing-xl);
+            }
+
+            .benefits-grid {
+                flex-direction: row;
+            }
+
+            .benefit-card {
+                flex: 1;
+            }
+
+            .steps {
+                flex-direction: row;
+            }
+
+            .step {
+                flex: 1;
+            }
+
+            .offer-grid {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .offer-item {
+                flex: 1;
+                min-width: calc(50% - var(--spacing-sm));
+            }
+
+            .pricing-grid {
+                flex-direction: row;
+            }
+
+            .pricing-card {
+                flex: 1;
+            }
+
+            .mobile-cta {
+                display: none;
+            }
+
+            .container {
+                padding: 0 var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Assine e acerte no vinho</h1>
+                    <p class="hero-subtitle">Faça o quiz e receba rótulos escolhidos por especialistas. Escolha segura, aprovada por iniciantes.</p>
+                    <a href="#planos" class="btn">Quero minha 1ª caixa com desconto</a>
+                </div>
+                <div class="hero-image" role="img" aria-label="Garrafa de vinho premium com taça em ambiente acolhedor">
+                    [Garrafa de vinho em madeira clara com taça servida, luz natural lateral, tons creme e bordô]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Por que nossos assinantes acertam sempre</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">✓</div>
+                    <h3>Curadoria sob medida</h3>
+                    <p>Quiz personalizado que entende seu paladar. Receba apenas vinhos que combinam com você, sem tentativa e erro.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">📖</div>
+                    <h3>Aprendizado simples</h3>
+                    <p>Explicações claras e diretas sobre cada vinho. Sem termos complicados, só o que importa para você aproveitar melhor.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">⚡</div>
+                    <h3>Flexibilidade total</h3>
+                    <p>Pause ou cancele quando quiser, sem burocracia. Você no controle, sem pegadinhas ou compromisso forçado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title">Mais de 12 mil pessoas já acertaram o vinho</h2>
+            <div class="stats">12.000+</div>
+            <p>assinantes ativos no Brasil</p>
+            <div class="testimonial">
+                "Sempre tive medo de comprar vinho e não gostar. Com a Reservedwines, finalmente consigo escolher sem medo de errar. Os vinhos vêm com explicações simples e todos que recebi até agora foram perfeitos para o meu gosto."
+                <div class="testimonial-author">— Ana P., assinante há 8 meses</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Como funciona</h2>
+            <p class="section-subtitle">Três passos simples para começar a acertar no vinho</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Escolha seu plano</h3>
+                    <p>Selecione a quantidade de garrafas ideal para você. Todos os planos incluem curadoria personalizada.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Receba em casa</h3>
+                    <p>Sua caixa chega todo mês com vinhos selecionados e material educativo sobre cada rótulo.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Descubra e aprenda</h3>
+                    <p>Aproveite seus vinhos com confiança. Avalie e refine suas preferências para próximas entregas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer & Differentials Section -->
+    <section class="offer">
+        <div class="container">
+            <h2 class="section-title">O que torna a Reservedwines diferente</h2>
+            <div class="offer-grid">
+                <div class="offer-item">
+                    <h3>Quiz inteligente de perfil</h3>
+                    <p>Baseado em preferências reais, não em jargões técnicos. Descubra seu perfil em 2 minutos.</p>
+                </div>
+                <div class="offer-item">
+                    <h3>Garantia de satisfação</h3>
+                    <p>Se não gostar de algum vinho, trocamos na próxima caixa. Sua satisfação é nossa prioridade.</p>
+                </div>
+                <div class="offer-item">
+                    <h3>Fichas descritivas claras</h3>
+                    <p>Cada vinho vem com explicação simples sobre sabor, harmonização e quando beber.</p>
+                </div>
+                <div class="offer-item">
+                    <h3>Entrega confiável</h3>
+                    <p>Embalagem segura e rastreamento completo. Receba seus vinhos em perfeito estado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="planos" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Escolha seu plano</h2>
+            <p class="section-subtitle">Todos os planos incluem curadoria personalizada, fichas descritivas e flexibilidade total</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Comecei Bem</h3>
+                    <p class="bottles">2 garrafas por mês</p>
+                    <div class="price-options">
+                        <div class="price-option"><strong>R$ 129/mês</strong> + frete</div>
+                        <div class="price-option"><strong>R$ 159/mês</strong> com frete incluso</div>
+                    </div>
+                    <p class="price-detail">Ideal para quem está começando e quer experimentar sem compromisso grande</p>
+                    <a href="#quiz" class="btn">Começar agora</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Descoberta</h3>
+                    <p class="bottles">3 garrafas por mês</p>
+                    <div class="price-options">
+                        <div class="price-option"><strong>R$ 189/mês</strong> + frete</div>
+                        <div class="price-option"><strong>R$ 229/mês</strong> com frete incluso</div>
+                    </div>
+                    <p class="price-detail">Mais popular entre iniciantes. Variedade ideal para descobrir seus favoritos</p>
+                    <a href="#quiz" class="btn">Começar agora</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium Tranquilo</h3>
+                    <p class="bottles">2 garrafas premium por mês</p>
+                    <div class="price-options">
+                        <div class="price-option"><strong>R$ 269/mês</strong> + frete</div>
+                        <div class="price-option"><strong>R$ 309/mês</strong> com frete incluso</div>
+                    </div>
+                    <p class="price-detail">Rótulos selecionados de maior complexidade, mas ainda com explicações simples</p>
+                    <a href="#quiz" class="btn btn-secondary">Começar agora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Dúvidas frequentes</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>E se eu não gostar de algum vinho?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sem problema. Oferecemos garantia de satisfação. Se você não gostar de algum vinho, basta nos informar e ajustaremos seu perfil para a próxima caixa. Em casos específicos, fazemos a troca na entrega seguinte.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso pausar ou cancelar a assinatura?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sim, você tem total flexibilidade. Pause sua assinatura por até 3 meses ou cancele a qualquer momento direto na sua conta, sem burocracia e sem taxas de cancelamento.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como funciona o frete?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Você pode escolher entre pagar o frete separadamente (calculado por região) ou optar pelo plano com frete incluso. O frete incluso compensa especialmente para regiões mais distantes. A entrega leva de 5 a 10 dias úteis.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso trocar meu perfil depois?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Claro! Seu paladar evolui e você pode atualizar suas preferências a qualquer momento na sua conta. Também usamos suas avaliações mensais para refinar automaticamente as próximas seleções.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Emitem nota fiscal?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sim, todas as compras incluem nota fiscal eletrônica enviada por e-mail. Somos uma empresa regularizada e você recebe toda documentação necessária.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Os vinhos são sempre os mesmos?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Não. Nossa curadoria varia mensalmente para você conhecer diferentes estilos, uvas e regiões. Mas sempre respeitando seu perfil de paladar, para que você goste de todas as opções.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-content">
+                <div class="guarantee-icon" aria-hidden="true">✓</div>
+                <h3>Garantia de 30 dias</h3>
+                <p>Experimente sua primeira caixa sem riscos. Se não ficar satisfeito nos primeiros 30 dias, devolvemos 100% do seu dinheiro. Simples assim.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta-final">
+        <div class="container">
+            <h2>Pronto para acertar no vinho?</h2>
+            <p>Junte-se a mais de 12 mil assinantes que já descobriram seus vinhos favoritos</p>
+            <a href="#planos" class="btn">Quero minha 1ª caixa com desconto</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Reservedwines. Todos os direitos reservados.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="#privacidade">Privacidade</a> | 
+                <a href="#termos">Termos de Uso</a> | 
+                <a href="#contato">Contato</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-cta">
+        <a href="#planos" class="btn">Quero minha 1ª caixa com desconto</a>
+    </div>
+
+    <script>
+        (function() {
+            var faqItems = document.querySelectorAll('.faq-item');
+            for (var i = 0; i < faqItems.length; i++) {
+                faqItems[i].querySelector('.faq-question').addEventListener('click', function() {
+                    var parent = this.parentElement;
+                    var wasActive = parent.classList.contains('active');
+                    var allItems = document.querySelectorAll('.faq-item');
+                    for (var j = 0; j < allItems.length; j++) {
+                        allItems[j].classList.remove('active');
+                    }
+                    if (!wasActive) {
+                        parent.classList.add('active');
+                    }
+                });
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
